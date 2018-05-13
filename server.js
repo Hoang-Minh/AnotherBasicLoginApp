@@ -11,7 +11,6 @@ var bodyparser = require("body-parser");
 // // =============================================================
 var app = express();
 var passport = require("passport");
-// //
 
 var PORT = process.env.PORT || 8080;
 
@@ -42,11 +41,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/htmlroutes")(app);
-require("./routes/apiroutes")(app, passport);
+require("./routes/htmlroutes")(app); // pass app to ./routes/htmlroutes
+require("./routes/apiroutes")(app, passport); // pass app and passport to ./routes/apiroutes
 
 //load passport strategies
-require('./config/passport')(passport);
+require('./config/passport')(passport); // pass passport to the .config/passport.js
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
